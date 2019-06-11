@@ -75,7 +75,11 @@ augroup DimFocus
 
   if exists('*matchaddpos')
     autocmd BufEnter,FocusGained,VimEnter,WinEnter * call dimfocus#focus_window()
+    autocmd BufEnter,FocusGained,VimEnter,WinEnter * set laststatus=2 showtabline=2
     autocmd FocusLost,WinLeave * call dimfocus#blur_window()
+    autocmd FocusLost,WinLeave * set laststatus=0 showtabline=0
+    
+    call lightline#update()
   endif
 augroup END
 
